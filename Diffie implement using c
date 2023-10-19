@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<math.h>
+long int power(int a,int b,int P)
+{
+	if(b==1)
+	{
+		return a;
+	}
+	else
+	{
+		return ((long int)pow(a,b)%P);
+	}
+}
+int main()
+{
+	int q,alpha,xa,xb,ya,yb;
+	long int ka,kb;
+	printf("Enter the primitive root:");
+	scanf("%d",&alpha);
+	printf("Enter q value:");
+	scanf("%d",&q);
+	printf("Enter private key of a:");
+	scanf("%d",&xa);
+	ya = power(alpha,xa,q);
+	printf("Enter the private key of b:");
+	scanf("%d",&xb);
+	yb = power(alpha,xb,q);
+	
+	ka = power(yb,xa,q);
+	kb = power(ya,xb,q);
+	
+	printf("The secret key of A is:%ld\n",ka);
+	printf("The secret key of B is:%ld",kb);
+}
